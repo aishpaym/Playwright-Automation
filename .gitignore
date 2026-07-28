@@ -1,0 +1,18 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+# VS Code
+.vscode/
+
+# Temporary Word files
+~$*
+*.tmp
+
+# Personal Notes
+Playwright Notes.docx
+Udemy Notes/
