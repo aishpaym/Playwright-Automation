@@ -1,0 +1,524 @@
+{
+  "info": {
+    "_postman_id": "{{postman_api_key}}",
+    "name": "✅ Assignment #1",
+    "description": "## Instructions for Assignment #1\n\n1. **Get the challenge:** Fork the parent collection to your own public workspace.\n    \n2. **Read the instructions:** You will find the tasks you need to complete below.\n    \n3. **Verify your solution:** Select the second folder `Check your solution` and follow the instructions in the documentation to validate your solution.\n    \n\n## Tasks\n\n### Task 1\n\nAdd to the request \"**Get API status**\" a Postman test that verifies the status is 200.\n\nOnce you have established that the test is working as expected, duplicate the request and drag it inside the \"Assignment #1\" collection and put it in the \"API requests\" folder. Ensure the name of the request remains the same.\n\n### Task 2\n\nAdd to the request \"**Get single product**\" a script that parses the JSON response body. Log the value of the property \"product-description\" to the Postman console.\n\nOnce you have established that the script is working as expected, duplicate the request and drag it inside the \"Assignment #1\" collection and put it in the \"API requests\" folder. Ensure the name of the request remains the same.\n\n### Task 3\n\nAdd to the request \"**Create a new order**\" a script that parses the JSON response body and sets a Postman variable named `orderId` with the id of the order that was just created.\n\nOnce you have established that the script is working as expected, duplicate the request and drag it inside the \"Assignment #1\" collection and put it in the \"API requests\" folder. Ensure the name of the request remains the same.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57299391",
+    "_collection_link": "https://go.postman.co/collection/57299391-230a4b0d-bb73-4bc9-8b0e-a3bec29f5cba?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "API requests",
+      "item": [
+        {
+          "name": "Get API status",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "\r",
+                  "/*let person={\r",
+                  "    name:\"devika\",\r",
+                  "    age:18,\r",
+                  "    isAdult:true,\r",
+                  "    hobbies: ['badminton','Reading','Watching Movies','Cooking']\r",
+                  "};\r",
+                  "//console.log(person);\r",
+                  "console.log(person.hobbies[3]);\r",
+                  "*/\r",
+                  "//To define a object \r",
+                  "let person={\r",
+                  "    name:\"devika\",\r",
+                  "    age:18,\r",
+                  "    isAdult:true,\r",
+                  "    hobbies: ['badminton','Reading','Watching Movies','Cooking'],\r",
+                  "    //function inside a object\r",
+                  "    greet: function(name){\r",
+                  "        return \"Hello \" + name;\r",
+                  "    }\r",
+                  "};\r",
+                  "//console.log(person);\r",
+                  "console.log(person.hobbies[3]);\r",
+                  "console.log(person.greet(\"Harsha\"));\r",
+                  "\r",
+                  "//function-> A function is a block of code that performs a specific task and can be called whenever needed this allows us to orgarnazise and reuse our code efficiently\r",
+                  "//define the function\r",
+                  "/*function greet(){\r",
+                  "    console.log(\"Hello,Aishu!\");\r",
+                  "}\r",
+                  "\r",
+                  "//we need to call this function\r",
+                  "greet();\r",
+                  "*/\r",
+                  "//function with variable\r",
+                  "function add(n1,n2){\r",
+                  "    return n1+n2;\r",
+                  "}\r",
+                  "\r",
+                  "let num1=24;\r",
+                  "let num2=40\r",
+                  "console.log(add(num1,num2));\r",
+                  "\r",
+                  "\r",
+                  "//Callback function\r",
+                  "//annonymouse function is as below ->When there is no name for the function\r",
+                  "let sayHello =function(){\r",
+                  "    console.log(\"Hello\");    \r",
+                  "} "
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "status"
+              ]
+            },
+            "description": "Retrieve the current status of the API"
+          },
+          "response": [
+            {
+              "name": "API status",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "enabled": true
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"status\": \"<string>\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get single product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response=pm.response.json();\r",
+                  "console.log(response['product-description']);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/products/:productId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products",
+                ":productId"
+              ],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "1003"
+                }
+              ]
+            },
+            "description": "Retrieve a single product by specifying the product ID."
+          },
+          "response": [
+            {
+              "name": "A list of products",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/products?page=1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page number to fetch",
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "enabled": true
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"category\": \"<string>\",\n    \"name\": \"<string>\",\n    \"isAvailable\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"category\": \"<string>\",\n    \"name\": \"<string>\",\n    \"isAvailable\": \"<boolean>\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Create a new order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response=pm.response.json();\r",
+                  "pm.collectionVariables.set(\"orderId\",response.id);\r",
+                  "console.log(\"orderId:\",response.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "x-api-key",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"{{$randomFullName}}\",\n  \"products\": [\n    {\n      \"id\": 2001,\n      \"quantity\": 1\n    },\n    {\n      \"id\": 2002,\n      \"quantity\": 3\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            },
+            "description": "Place a new order by providing customer details and ordered products"
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Check your solution",
+      "item": [
+        {
+          "name": "Verify your work",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let collection = pm.response.json().collection",
+                  "",
+                  "pm.test(\"If you have any failures, review the failed test results or ask for support in the community forum. Remember to save your changes if you update the collection.\", () => {",
+                  "    pm.expect(true);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Correct collection returned\", () => {",
+                  "    pm.expect(collection.info.name).contains(\"Assignment #1\")",
+                  "});",
+                  "",
+                  "pm.test(\"API key secure\", () => {",
+                  "    let apiKey = collection.variable.find(item => { return item.key === \"postman_api_key\"});",
+                  "    pm.expect(apiKey.value, 'API key visible under Initial value').does.not.include(\"PMAK\");",
+                  "});",
+                  "",
+                  "let folder = collection.item.find(fol => {return fol.name === \"API requests\"})",
+                  "",
+                  "pm.test(\"Requests added correctly\", () => {",
+                  "    pm.expect(folder.item.length, 'check number of requests').equals(3);",
+                  "",
+                  "    let request;",
+                  "",
+                  "    request = folder.item.find(req => { return req.name === \"Get API status\"})",
+                  "    pm.expect(request.name, 'check name').equals(\"Get API status\");",
+                  "",
+                  "    request = folder.item.find(req => { return req.name === \"Get single product\"})",
+                  "    pm.expect(request.name, 'check name').equals(\"Get single product\");",
+                  "",
+                  "    request = folder.item.find(req => { return req.name === \"Create a new order\"})",
+                  "    pm.expect(request.name, 'check name').equals(\"Create a new order\");    ",
+                  "})",
+                  "",
+                  "",
+                  "",
+                  "pm.test(\"Get API status contains status 200 test\", () => {",
+                  "    let request = folder.item.find(req => {return req.name === \"Get API status\"})",
+                  "",
+                  "    pm.expect(request.event).to.be.an('array', 'The request has no scripts.');",
+                  "    let tests = request.event.find(event => event.listen === 'test');",
+                  "    pm.expect(tests).to.be.an('object', 'The request has no test script.');",
+                  "    pm.expect(tests.script.exec.toString(), 'check script').includes(\"pm.test\");",
+                  "    pm.expect(tests.script.exec.toString(), 'check script').includes(\"pm.response.to.have.status\");",
+                  "});",
+                  "",
+                  "pm.test(\"Get single product parses the response body and logs a value to the Postman console\", () => {",
+                  "    let request = folder.item.find(req => {return req.name === \"Get single product\"});",
+                  "",
+                  "    pm.expect(request.event).to.be.an('array', 'The request has no scripts.');",
+                  "    let tests = request.event.find(event => event.listen === 'test');",
+                  "    pm.expect(tests).to.be.an('object', 'The request has no test script.');",
+                  "    pm.expect(tests.script.exec.toString(), 'check script').includes(\"pm.response.json()\");",
+                  "    pm.expect(tests.script.exec.toString(), 'check script').includes(\"console.log\");",
+                  "    pm.expect(tests.script.exec.toString(), 'check script').includes(\"product-description\");",
+                  "});",
+                  "",
+                  "pm.test(\"Create a new order sets a Postman variable\", () => {",
+                  "    let request = folder.item.find(req => {return req.name === \"Create a new order\"});",
+                  "",
+                  "    pm.expect(request.event).to.be.an('array', 'The request has no scripts.');",
+                  "    let tests = request.event.find(event => event.listen === 'test');",
+                  "    pm.expect(tests).to.be.an('object', 'The request has no test script.');",
+                  "    pm.expect(tests.script.exec.toString(), 'check script').includes(\"pm.response.json()\");",
+                  "    pm.expect(tests.script.exec.toString(), 'check script').includes(\"pm.collectionVariables.set\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "X-API-Key",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{postman_api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.getpostman.com/collections/:collectionId?apikey={{postman_api_key}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "getpostman",
+                "com"
+              ],
+              "path": [
+                "collections",
+                ":collectionId"
+              ],
+              "query": [
+                {
+                  "key": "apikey",
+                  "value": "{{postman_api_key}}"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "collectionId",
+                  "value": "{{collection_uuid}}"
+                }
+              ]
+            },
+            "description": "It's time to check your work.\n\n1. **Get the collection ID:** Select the collection \"Assignment #1\" in the sidebar. Then in the context bar to the right, select the `Info` icon and copy the collection `ID`. Make sure you're getting the `ID` for the collection, and not this request.\n2. **Update the request URL:** Update the `{{collection_uuid}}` in the request URL with the collection `ID` from the previous step, by updating the Postman collection variable.\n    \n3. **Get your Postman API key**: Select the collection in the left sidebar, and tab over to **Variables** to edit collection variables. You can already see one variable called `postman_api_key`. Get your [Postman API key](https://go.postman.co/settings/me/api-keys), and paste the value under `CURRENT VALUE` (and not `INITIAL VALUE`).> ⚠ DON'T LEAK YOUR SECRETS!  \n    It's very important to add sensitive values like an API key to the `CURRENT VALUE` (and not `INITIAL VALUE`) of your public workspace since initial values can be viewed publicly in a public workspace. Storing sensitive values only in `CURRENT VALUE` keeps your secrets private in a team or public workspace. If you accidentally show your API key, [revoke and regenerate your API key](https://go.postman.co/settings/me/api-keys).  \n    Once you save the changes, Postman can authorize your request as shown under the **Headers** tab of the request.\n4. **Validate your solution**: Hit **Send** and look under the **Tests** tab of the server response at the bottom to review your test results. ENSURE ALL TESTS PASS.\n    \n\nIf you have any failures, review the failed test results or ask for support in the [community forum](https://community.postman.com/c/training/38). When all of your tests pass, move on to the next request in this folder."
+          },
+          "response": []
+        }
+      ],
+      "description": "Open the request \"Verify your work\" and follow the instructions in the request documentation."
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "postman_api_key",
+      "value": ""
+    },
+    {
+      "key": "collection_uuid",
+      "value": ""
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://valentinos-coffee.herokuapp.com"
+    },
+    {
+      "key": "apiKey",
+      "value": ""
+    },
+    {
+      "key": "orderId",
+      "value": ""
+    }
+  ]
+}
