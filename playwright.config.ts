@@ -9,12 +9,14 @@ export default defineConfig({
     headless: false,
     screenshot: 'on',
     //to get the all log information we can use trace for retaining on failure 
-    trace: 'retain-on-failure',
+    trace: 'on',
 
 
  },
+
+ 
 //max time a test can run for here it is 40 secs or else it will give timeout error
-  timeout: 40 * 1000,
+  timeout: 30 * 1000,
 //if need to change the timeout at global add the timout second in expect
   expect: {
     timeout: 5000,
